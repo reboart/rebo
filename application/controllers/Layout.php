@@ -20,9 +20,10 @@ class Layout extends CI_Controller {
 		);
 
 		$this->load->view('template/admin_header',$data);
-		$this->load->view('template/top_nav');
 		$this->load->view('template/admin_sidebar',$data);
+		$this->load->view('template/admin_top_nav',$data);
 		$this->load->view('layout/control',$data);
+		$this->load->view('template/admin_footer',$data);
 	}
 
 

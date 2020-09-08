@@ -1,13 +1,19 @@
 <div class="container">
   
+<?php
 
+        $querynew = "SELECT * FROM `rb_post` ORDER BY `id` DESC LIMIT 4
+                        
+                        ";
+$categ=$this->db->query($querynew)->result_array();
+;?>
     <div class="row">
-
+<?php foreach($categ as $cg):?>
         <div class="col-lg-3 col-md-4 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="course-item card border-0">
-              <img src="<?= base_url()?>assets/images/big/img2.jpg" class="img-fluid img-card card-img-top" alt="...">
+              <img src="<?= base_url()?>assets/images/post/<?= $cg['thumbnail']?>" class="img-fluid img-card card-img-top" alt="...">
               <div class="course-content p-2">
-                <h4><a href="course-details.html">Search Engine Optimization</a></h4>
+                <h4><a href="<?= base_url('home/post/'). $cg['id']?>"><?= $cg['post_title']?></a></h4>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
@@ -22,6 +28,7 @@
               </div>
             </div>
         </div> <!-- End Course Item-->
+      <?php endforeach;?>
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="course-item card border-0">
               <img src="<?= base_url()?>assets/images/big/img3.jpg" class="img-fluid card-img-top" alt="...">

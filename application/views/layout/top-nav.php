@@ -54,21 +54,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url()?>assets/images/nav.png" class="light-logo" style="width: 100px;" alt="homepage" /></a>
                         </li>
+                        
                         <li class="nav-item pl-5">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect hidden-sm-down waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
+                            <?php foreach($menu as $me):?>
+                                <a class="nav-link dropdown-toggle text-muted waves-effect hidden-sm-down waves-dark" href="<?= base_url()?><?= $me['url']?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $me['title']?></a>
+                            <?php endforeach;?>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect hidden-sm-down waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link dropdown-toggle hidden-sm-down text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sitemap</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect hidden-sm-down waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Web</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect hidden-sm-down waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bisnis</a>
-                        </li>
+                    
                         
                         <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search">

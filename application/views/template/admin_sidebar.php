@@ -1,49 +1,49 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <img src="<?=base_url("assets/images/favicon.png")?>" width="50px">
+    </div>
+    <div class="sidebar-brand-text mx-3">ReboArt <sup>Blog</sup></div>
+  </a>
+<?php
 
-                    
+    $querymenu = "SELECT *
+                   FROM `rb_user_menu` JOIN `rb_user_access_menu` 
+                   ON `rb_user_menu`. `menu_id` = `rb_user_access_menu`. `admin`
+                    ";
+    $menu = $this->db->query($querymenu)->result_array();
+          
+        ?>
 
-                    <?php
+<!-- Divider -->
+<hr class="sidebar-divider my-0">
+<?php foreach ($menu as $m): ?>
+    <?php if ($title == $m['title']): ?>
+      <li class="nav-item active">
+      <?php else:?>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+    <?php endif;?>
+    <a class="nav-link" href="<?= base_url()?><?=$m['url']?>">
+      <i class="<?=$m['icon']?>"></i>
+      <span><?=$m['title']?></span></a>
+  </li>
+<!-- Divider -->
+<hr class="sidebar-divider">
+<?php endforeach; ?>
 
-                        $querymenu = "SELECT *
-                                        FROM `rb_user_menu` JOIN `rb_user_access_menu` 
-                                        ON `rb_user_menu`. `menu_id` = `rb_user_access_menu`. `admin`
-                                        ";
-                        $menu = $this->db->query($querymenu)->result_array();
-                        
-                                    
-                    ?>
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
 
+</ul>
+<!-- End of Sidebar -->
+  <!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
 
-                    <ul id="sidebarnav">
-                        <?php foreach ($menu as $m): ?>
-                        <li> 
-                            <a class="waves-effect waves-dark" href="<?= base_url()?><?=$m['url']?>" aria-expanded="false">
-                                <i class="<?=$m['icon']?>"></i>
-                                <span class="hide-menu"><?=$m['title']?></span>
-                            </a>
-                        </li>
-                        <?php endforeach; ?>
-                        
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-            <!-- Bottom points-->
-            <div class="sidebar-footer">
-                <!-- item--><a href="<?= base_url('admin/options');?>" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                <!-- item--><a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                <!-- item--><a href="<?= base_url('auth/logout');?>" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
-            <!-- End Bottom points-->
-        </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+  <!-- Main Content -->
+  <div id="content">

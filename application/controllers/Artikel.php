@@ -20,14 +20,15 @@ class Artikel extends CI_Controller {
 			'usermenu' => $this->artikel_model->usermenu(),
 			
 		);
-		$data['title']='New Artikel';
+		$data['title']='Artikel';
 		$data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
 		$data['usermenu'] = $this->db->get('rb_user_menu')->result_array();
 
 		$this->load->view('template/admin_header',$data);
-		$this->load->view('template/top_nav',$data);
 		$this->load->view('template/admin_sidebar',$data);
+		$this->load->view('template/admin_top_nav',$data);
 		$this->load->view('artikel/index',$data);
+		$this->load->view('template/admin_footer',$data);
 		
 
 
@@ -41,28 +42,52 @@ class Artikel extends CI_Controller {
 			'usermenu' => $this->artikel_model->usermenu(),
 			
 		);
-		$data['title']='New Artikel';
+		$data['title']='Artikel';
 		$data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
 		$data['usermenu'] = $this->db->get('rb_user_menu')->result_array();
 
 		$this->load->view('template/admin_header',$data);
-		$this->load->view('template/top_nav',$data);
-		$this->load->view('template/user_sidebar',$data);
+		$this->load->view('template/admin_sidebar',$data);
+		$this->load->view('template/admin_top_nav',$data);
 		$this->load->view('artikel/artikel_user',$data);
+		$this->load->view('template/admin_footer',$data);
 		
 
 
 	}
 
 	public function new(){
-		$data['title']='New Artikel';
+		$data['title']='Artikel';
 		$data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
 		$data['usermenu'] = $this->db->get('rb_user_menu')->result_array();
 
 		$this->load->view('template/admin_header',$data);
-		$this->load->view('template/top_nav');
 		$this->load->view('template/admin_sidebar',$data);
+		$this->load->view('template/admin_top_nav',$data);
 		$this->load->view('artikel/new',$data);
+		$this->load->view('template/admin_footer',$data);
+	}
+
+	public function edit()
+	{
+		$id = $this->uri->segment(3);
+
+		$data = array(
+			'title' => 'Artikel',
+			'edit'	=> $this->artikel_model->edit($id),
+			 );
+		$data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
+		$this->load->view('template/admin_header',$data);
+		$this->load->view('template/admin_sidebar',$data);
+		$this->load->view('template/admin_top_nav',$data);
+		$this->load->view('artikel/edit',$data);
+		$this->load->view('template/admin_footer',$data);
+	}
+
+	public function update()
+	{
+		$id = $this->input->post('id');
+
 	}
 
 	// public function newpost()
@@ -130,11 +155,13 @@ class Artikel extends CI_Controller {
 				$auth= 1;
 				$sta= 1;
 				$comen= 1;
+				$categ= $this->input->post('categori');;
 				$type= 'post';
 
 				$data = [
 					'post_author' 		=> $auth,
 					'post_content' 		=> $content,
+					'categori' 			=> $categ,
 					'post_title' 		=> $title,
 					'post_excrept' 		=> $ext,
 					'post_status' 		=> $sta,
@@ -145,9 +172,9 @@ class Artikel extends CI_Controller {
 
 				$this->artikel_model->newpost($data);
 
-				redirect('artikel');
+				redirect('artikel/a');
 			}else{
-				redirect('artikel');
+				redirect('artikel/a');
 			}
 		}
 	}

@@ -22,9 +22,10 @@ public function __construct(){
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('template/admin_header',$data);
-			$this->load->view('template/top_nav');
 			$this->load->view('template/admin_sidebar',$data);
+			$this->load->view('template/admin_top_nav',$data);
 			$this->load->view('menu/index',$data);
+			$this->load->view('template/admin_footer',$data);
 		
 		}else {
 
@@ -59,14 +60,14 @@ public function __construct(){
 			'menu_edit' => $this->menu_model->edit($id),
 			'user' => $this->menu_model->user(),
 			
-
 		);
 
-		
+		$data['user'] = $this->db->get_where('user',['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('template/admin_header',$data);
-		$this->load->view('template/top_nav',$data);
 		$this->load->view('template/admin_sidebar',$data);
+		$this->load->view('template/admin_top_nav',$data);
 		$this->load->view('menu/edit',$data);
+		$this->load->view('template/admin_footer',$data);
 		
 	}
 

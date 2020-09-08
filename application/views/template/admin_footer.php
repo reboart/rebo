@@ -1,36 +1,75 @@
-<!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer">
-                © 2017 Material Pro Admin by wrappixel.com
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
+      <!-- End of Main Content -->
+
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; ReboArt <?= date('Y')?></span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="<?= base_url('auth/logout')?>">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="<?= base_url('assets/dashboard/');?>vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url('assets/dashboard/');?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="<?= base_url('assets/dashboard/');?>vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="<?= base_url('assets/dashboard/');?>js/sb-admin-2.min.js"></script>
+  <!-- Page level plugins -->
+  <script src="<?= base_url('assets/dashboard/');?>vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url('assets/dashboard/');?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?= base_url('assets/dashboard/');?>js/demo/database.js"></script>
+      <script src="<?php echo base_url().'assets/dashboard/ckeditor/ckeditor.js'?>"></script>
+    <script type="text/javascript">
+    $(function () {
+      CKEDITOR.replace('ckeditor');
+    });
+  </script>
     <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="<?= base_url();?>assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?= base_url();?>assets/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="<?= base_url();?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="<?= base_url('assets/');?>js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="<?= base_url('assets/');?>js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="<?= base_url('assets/');?>js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="<?= base_url('assets/');?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="<?= base_url('assets/');?>js/custom.min.js"></script>
+    
+    <!--c3 JavaScript -->
+    <script src="<?= base_url();?>assets/plugins/d3/d3.min.js"></script>
+    <script src="<?= base_url();?>assets/plugins/c3-master/c3.min.js"></script>
+
+
 </body>
 
 </html>

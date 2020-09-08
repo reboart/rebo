@@ -34,4 +34,15 @@ class Artikel_model extends CI_model{
 		}
 	}
 
+	public function edit($id)
+	{
+		$query = $this->db->where('id', $id)->get('rb_post');
+
+		if ($query) {
+			return $query->row();
+		}else {
+			return false;
+		}
+	}
+
 }

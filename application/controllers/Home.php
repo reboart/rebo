@@ -6,30 +6,62 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('home_model');
+
+			
+
 	}
 
 	public function index()
 	{
-		$this->load->view('layout/header');
-		$this->load->view('layout/top-nav');
-		$this->load->view('layout/sidebar');
-		$this->load->view('layout/index');
-		$this->load->view('layout/content');
-		$this->load->view('layout/footer');
+		// rebo options
+		$siurl = $this->db->get_where('rb_options' ,['id'=> 1])->row_array();
+		$hm = $this->db->get_where('rb_options' ,['id'=> 2])->row_array();
+		$blogname = $this->db->get_where('rb_options' ,['id'=> 3])->row_array();
+		$tl = $this->db->get_where('rb_options' ,['id'=> 4])->row_array();
+		$tl = $this->db->get_where('rb_options' ,['id'=> 4])->row_array();
+		$tl = $this->db->get_where('rb_options' ,['id'=> 4])->row_array();
+		$data['title']= $tl['value'];
+			// menu
+		$data['menu']= $this->db->get_where('rb_user_menu',['menu_id'=> 3])->result_array();
+
+
+		$this->load->view('layout/header', $data);
+		$this->load->view('layout/index', $data);
+		$this->load->view('layout/footer', $data);
+	
 	}
 
 	public function post()
 	{	
 		$kode=$this->uri->segment(3);
-		$x['data']=$this->home_model->post($kode)->row_array();
+		$x['postnya']=$this->home_model->post($kode)->row_array();
+		// rebo options
+		$siurl = $this->db->get_where('rb_options' ,['id'=> 1])->row_array();
+		$hm = $this->db->get_where('rb_options' ,['id'=> 2])->row_array();
+		$blogname = $this->db->get_where('rb_options' ,['id'=> 3])->row_array();
+		$tl = $this->db->get_where('rb_options' ,['id'=> 4])->row_array();
+		$tl = $this->db->get_where('rb_options' ,['id'=> 4])->row_array();
+		$tl = $this->db->get_where('rb_options' ,['id'=> 4])->row_array();
+		$data['title']= $tl['value'];
+
+		// menu
+		$data['menu']= $this->db->get_where('rb_user_menu',['menu_id'=> 3])->result_array();
 
 
-		$this->load->view('layout/header');
-		$this->load->view('layout/top-nav');
-		$this->load->view('layout/sidebar');
+		// post terkait
+		$ck = $x['postnya'];
+		$ckt = $ck['categori'];
+		$data['ctg']= $this->db->get_where('rb_post',['categori'=> $ckt])->result_array();
+		
+
+		$this->load->view('layout/header',$data);
 		$this->load->view('layout/page', $x);
-		$this->load->view('layout/content');
-		$this->load->view('layout/footer');
+		$this->load->view('layout/footer_page',$data);
+		
+	}
+	public function demo()
+	{
+		$this->load->view('index');
 	}
 
 
